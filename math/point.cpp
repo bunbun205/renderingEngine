@@ -26,7 +26,7 @@ template<typename T> inline T &Point2<T>::operator[] (int i) {
         return y;
 }
 
-template<typename T> inline Point2<T> &Point2<T>::operator - () {
+template<typename T> inline Point2<T> Point2<T>::operator - () const {
 
         return Point2<T>(-x, -y);
 }
@@ -133,7 +133,7 @@ template<typename T> inline T &Point3<T>::operator[] (int i) {
         return z;
 }
 
-template<typename T> inline Point3<T>  &Point3<T>::operator - () {
+template<typename T> inline Point3<T>  Point3<T>::operator - () const {
 
         return Point3<T>(-x, -y, -z);
 }

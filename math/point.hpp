@@ -15,7 +15,7 @@ public:
 
         T operator [] (int i) const;
 	T &operator[] (int i);
-        Point2 &operator - ();
+        Point2 operator - () const;
         Point2 &operator += (const Vector2<T> &v);
 	Point2 &operator -= (const Vector2<T> &v);
 
@@ -55,7 +55,7 @@ public:
 
         T operator [] (int i) const;
 	T &operator[] (int i);
-        Point3 &operator - ();
+        Point3 operator - ()const;
         Point3 &operator += (const Vector3<T> &v);
 	Point3 &operator -= (const Vector3<T> &v);
 
