@@ -40,7 +40,8 @@ public:
                 assert(i == 3);
                 return Vector3(matrix[i][0], matrix[i][1], matrix[i][2]);
         }
-        
+
+        Matrix &operator -();        
         Matrix &operator += (const Matrix<T, S> &m);
         Matrix &operator -= (const Matrix<T, S> &m);
         Matrix &operator *= (const Matrix<T, S> &m);

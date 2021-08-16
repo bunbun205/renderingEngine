@@ -99,6 +99,19 @@ template <typename T, int S> inline Vector2<T> &Matrix<T, S>::operator() (int i)
         return Vector2<T>(matrix[i][0], matrix[i][1]);
 }
 
+template <typename T, int S> inline Matrix<T, S> &Matrix<T, S>::operator - () {
+
+        for(int i = 0; i < S; i++) {
+
+                for(int j = 0; j < S; j++) {
+
+                        matrix[i][j] = -matrix[i][j];
+                }
+        }
+
+        return *this;
+}
+
 template <typename T, int S> inline Matrix<T, S> &Matrix<T, S>::operator += (const Matrix<T, S> &m) {
 
         for(int i = 0; i < S; i++) {
