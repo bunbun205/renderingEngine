@@ -2,6 +2,10 @@
 
 #include <matrix.hpp>
 
+// 3D Normal forward declaration
+
+template<typename T> class Normal3;
+
 /**********************************************************************2D VECTOR**********************************************************************/
 template<typename T> class Vector2 {
 
@@ -53,6 +57,7 @@ public:
 	Vector3(T a);
 	Vector3(T X, T Y, T Z);
 	Vector3(const Vector3 &v);
+	explicit Vector3(const Normal3<T> &n) { x = n.x; y = n.y; z = n.z; }
 
 	T operator [] (int i) const;
 	T &operator[] (int i);
