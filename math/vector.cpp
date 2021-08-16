@@ -26,7 +26,7 @@ template<typename T> inline T &Vector2<T>::operator[] (int i) {
         return y;
 }
 
-template<typename T> inline Vector2<T> &Vector2<T>::operator - (){
+template<typename T> inline Vector2<T> Vector2<T>::operator - () const {
 
         return Vector3<T>(-x, -y);
 }
@@ -144,7 +144,7 @@ template<typename T> inline T &Vector3<T>::operator[] (int i) {
         return z;
 }
 
-template<typename T> inline Vector3<T> &Vector3<T>::operator - (){
+template<typename T> inline Vector3<T> Vector3<T>::operator - () const {
 
         return Vector3<T>(-x, -y, -z);
 }
