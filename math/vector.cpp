@@ -186,7 +186,7 @@ template<typename T> inline T lengthSquared() {
 
 template<typename T> inline std::ostream &operator << (std::ostream &out, const Vector3<T> &v) {
 
-        return out << x << ' ' << y << ' ' << z;
+        return out << v.x << ' ' << v.y << ' ' << v.z;
 }
 
 template<typename T> inline Vector3<T> operator + (const Vector3<T> &u, const Vector3<T> &v) {

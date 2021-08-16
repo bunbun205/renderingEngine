@@ -153,7 +153,7 @@ template<typename T> inline Point3<T>  &Point3<T>::operator -= (const Vector3<T>
 
 template<typename T> inline std::ostream &operator << (std::ostream &out, const Point3<T> &p) {
 
-        return out << x << ' ' << y << ' ' << z;
+        return out << p.x << ' ' << p.y << ' ' << p.z;
 }
 
 template<typename T> inline Point3<T> operator + (const Point3<T> p, const Vector3<T> v) {
