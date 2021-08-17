@@ -6,6 +6,8 @@
 
 template<typename T> class Vector2;
 template<typename T> class Vector3;
+template<typename T> class Point2;
+template<typename T> class Point3;
 
 // Matrix class declaration
 
@@ -27,18 +29,55 @@ public:
 
         Matrix operator () (int i, int j) const;
         Matrix &operator() (int i, int j);
-        Vector2<T> operator () (int i) const;
-        Vector2<T> &operator() (int i);
+        Vector2<T> operator () (int i) const {
+
+                assert(S == 2);
+
+                return Vector2<T>(matrix[i][0], matrix[i][1]);
+        }
+
+        Vector2<T> &operator() (int i) {
+
+                assert(S == 2);
+
+                return Vector2<T>(matrix[i][0], matrix[i][1]);
+        }
+
+        Point2<T> operator () (int i) const {
+
+                assert(S == 2);
+
+                return Point2<T>(matrix[i][0], matrix[i][1]);
+        }
+
+        Point2<T> &operator() (int i) {
+
+                assert(S == 2);
+
+                return Point2<T>(matrix[i][0], matrix[i][1]);
+        }
+
         Vector3<T> operator () (int i) const {
 
                 assert(i == 3);
-                return Vector3(matrix[i][0], matrix[i][1], matrix[i][2]);
+                return Vector3<T>(matrix[i][0], matrix[i][1], matrix[i][2]);
         }
 
         Vector3<T> &operator() (int i)  {
 
                 assert(i == 3);
-                return Vector3(matrix[i][0], matrix[i][1], matrix[i][2]);
+                return Vector3<T>(matrix[i][0], matrix[i][1], matrix[i][2]);
+        }
+        Point3<T> operator () (int i) const {
+
+                assert(i == 3);
+                return Point3<T>(matrix[i][0], matrix[i][1], matrix[i][2]);
+        }
+
+        Point3<T> &operator() (int i)  {
+
+                assert(i == 3);
+                return Point3<T>(matrix[i][0], matrix[i][1], matrix[i][2]);
         }
 
         Matrix operator -() const;        
