@@ -1,6 +1,6 @@
 #pragma once
 
-#include <math.hpp>
+#include <header.hpp>
 
 // 2D and 3D Vector classes forward declarations
 
