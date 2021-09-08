@@ -32,7 +32,7 @@ typedef Point2<int>    Point2i;
 
 template<typename T> inline std::ostream &operator << (std::ostream &out, const Point2<T> &p) {
 
-        return out << x << ' ' << y;
+        return out << p.x << ' ' << p.y;
 }
 
 template<typename T> inline Point2<T> operator + (const Point2<T> p, const Vector2<T> v) {
@@ -112,8 +112,8 @@ public:
 
 // 3D Point aliases
 
-typedef Point3<double> Point3f;
-typedef Point3<int>    Point3i;
+using Point3f = Point3<double>;
+using Point3i = Point3<int>;
 
 // 3D Point inline functions definition
 
@@ -154,12 +154,12 @@ template<typename T> inline Point3<T> Lerp(T t, const Point3<T> &p1, const Point
 
 template<typename T> inline Point3<T> Max(const Point3<T> &p1, const Point3<T> &p2) {
 
-        return Point3<T>(std::max(p1.x, p2.x), std::max(p1.y, p2.y), std::max(p1.z, p2.z))
+        return Point3<T>(std::max(p1.x, p2.x), std::max(p1.y, p2.y), std::max(p1.z, p2.z));
 }
 
 template<typename T> inline Point3<T> Min(const Point3<T> &p1, const Point3<T> &p2) {
 
-        return Point3<T>(std::min(p1.x, p2.x), std::min(p1.y, p2.y), std::min(p1.z, p2.z))
+        return Point3<T>(std::min(p1.x, p2.x), std::min(p1.y, p2.y), std::min(p1.z, p2.z));
 }
 
 template<typename T> inline Point3<T> Floor(const Point3<T> &p) {

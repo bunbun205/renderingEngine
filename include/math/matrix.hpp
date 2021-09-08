@@ -29,56 +29,6 @@ public:
 
         Matrix operator () (int i, int j) const;
         Matrix &operator() (int i, int j);
-        Vector2<T> operator () (int i) const {
-
-                assert(S == 2);
-
-                return Vector2<T>(matrix[i][0], matrix[i][1]);
-        }
-
-        Vector2<T> &operator() (int i) {
-
-                assert(S == 2);
-
-                return Vector2<T>(matrix[i][0], matrix[i][1]);
-        }
-
-        Point2<T> operator () (int i) const {
-
-                assert(S == 2);
-
-                return Point2<T>(matrix[i][0], matrix[i][1]);
-        }
-
-        Point2<T> &operator() (int i) {
-
-                assert(S == 2);
-
-                return Point2<T>(matrix[i][0], matrix[i][1]);
-        }
-
-        Vector3<T> operator () (int i) const {
-
-                assert(i == 3);
-                return Vector3<T>(matrix[i][0], matrix[i][1], matrix[i][2]);
-        }
-
-        Vector3<T> &operator() (int i)  {
-
-                assert(i == 3);
-                return Vector3<T>(matrix[i][0], matrix[i][1], matrix[i][2]);
-        }
-        Point3<T> operator () (int i) const {
-
-                assert(i == 3);
-                return Point3<T>(matrix[i][0], matrix[i][1], matrix[i][2]);
-        }
-
-        Point3<T> &operator() (int i)  {
-
-                assert(i == 3);
-                return Point3<T>(matrix[i][0], matrix[i][1], matrix[i][2]);
-        }
 
         Matrix operator -() const;        
         Matrix &operator += (const Matrix<T, S> &m);
@@ -98,10 +48,12 @@ public:
 
 // Matrix types definitions
 
-typedef Matrix<double, 3> Matrix3f;
-typedef Matrix<double, 4> Matrix4f;
-typedef Matrix<int, 3>    Matrix3i;
-typedef Matrix<int, 4>    Matrix4i;
+using Matrix2f = Matrix<double, 2>;
+using Matrix3f = Matrix<double, 3>;
+using Matrix4f = Matrix<double, 4>;
+using Matrix2i = Matrix<int, 2>;
+using Matrix3i = Matrix<int, 3>;
+using Matrix4i = Matrix<int, 4>;
 
 // Identity matrices definition
 
@@ -118,30 +70,30 @@ typedef Matrix<int, 4>    Matrix4i;
                             0, 1, 0,\
                             0, 0, 1)
 
-#define Identity3i Matrix3i(1, 0, 0, 0,\
+#define Identity4i Matrix3i(1, 0, 0, 0,\
                             0, 1, 0, 0,\
                             0, 0, 1, 0,\
                             0, 0, 0, 1)
 
 // Diagonal matrix definition
 
-#define diagMat3i(s) Matrix3i(s, 0, 0,\
-                              0, s, 0,\
-                              0, 0, s)
+#define diagMat3i(s) Matrix3i((s), 0,  0,\
+                               0, (s), 0,\
+                               0,  0, (s))
 
-#define diagMat4i(s) Matrix4i(s, 0, 0, 0,\
-                              0, s, 0, 0,\
-                              0, 0, s, 0,\
-                              0, 0, 0, s)
+#define diagMat4i(s) Matrix4i((s), 0,  0,  0,\
+                               0, (s), 0,  0,\
+                               0,  0, (s), 0,\
+                               0,  0,  0, (s))
 
-#define diagMat3f(s) Matrix3f(  s, 0.0, 0.0,\
-                              0.0,   s, 0.0,\
-                              0.0, 0.0,   s)
+#define diagMat3f(s) Matrix3f((s), 0.0, 0.0,\
+                              0.0, (s), 0.0,\
+                              0.0, 0.0, (s))
 
-#define diagMat4f(s) Matrix4f(  s, 0.0, 0.0, 0.0,\
-                              0.0,   s, 0.0, 0.0,\
-                              0.0, 0.0,   s, 0.0,\
-                              0.0, 0.0, 0.0,   s)
+#define diagMat4f(s) Matrix4f((s), 0.0, 0.0, 0.0,\
+                              0.0, (s), 0.0, 0.0,\
+                              0.0, 0.0, (s), 0.0,\
+                              0.0, 0.0, 0.0, (s))
 
 
 // Matrix inline functions
@@ -203,7 +155,7 @@ template <typename T, int S> inline Matrix<T, S> operator * (const Matrix<T, S> 
 
                         for(int x = 0; x < S; x++) {
 
-                                sum += n(i, x)] * m(x, j);
+                                sum += n(i, x) * m(x, j);
                         }
 
                         mat(i, j) = sum;
@@ -291,7 +243,7 @@ template <typename T, int S> inline Matrix<T, S> transpose(const Matrix<T,S> &m)
                 }
         }
 
-        return *this;
+        return m;
 }
 
 template <typename T, int S> inline  Matrix<T, S>adjoint(const Matrix<T,S> &m) {

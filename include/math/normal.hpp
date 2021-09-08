@@ -9,7 +9,7 @@ public:
 	Normal3(T a);
 	Normal3(T X, T Y, T Z);
 	Normal3(const Normal3<T> &n);
-        explicit Normal3(const Vector3<T> &v) { x = v.x; v = v.y; z = v.z; }
+        explicit Normal3(const Vector3<T> &v) { x = v.x; y = v.y; z = v.z; }
 
 	T operator [] (int i) const;
 	T &operator[] (int i);
@@ -27,8 +27,8 @@ public:
 
 // 3D Normal aliases
 
-typedef Normal3<double> Normal3f;
-typedef Normal3<int>    Normal3i;
+using Normal3f = Normal3<double>;
+using Normal3i = Normal3<int>;
 
 // 3D Normal inline functions
 
@@ -80,7 +80,7 @@ template<typename T> inline T dot(const Normal3<T> &n, const Vector3<T> &v) {
 template<typename T> inline Vector3<T> cross(const Normal3<T> &n, const Vector3<T> &v) {
 
         return Vector3<T>(n.y * v.z - n.z * v.y,
-                          n.z * v*x - n.x * v.z,
+                          n.z * v.x - n.x * v.z,
                           n.x * v.y - n.y * v.x);
 }
 
@@ -101,5 +101,5 @@ template<typename T> inline Normal3<T> normalize(Normal3<T> n) {
 
 template<typename T> inline Normal3<T> faceForward(const Normal3<T> &n, const Vector3<T> &v) {
 
-        return (dot(n, v) < 0.T) ? -n : n;
+        return (dot(n, v) < T(0)) ? -n : n;
 }

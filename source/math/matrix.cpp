@@ -169,7 +169,7 @@ template <typename T, int S> inline T Matrix<T, S>::trace() {
 
         for(int i = 0; i < S; i++) {
 
-                sum += m[i][i];
+                sum += matrix[i][i];
         }
 
         return sum;

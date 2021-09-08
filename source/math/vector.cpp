@@ -120,12 +120,12 @@ template<typename T> inline Vector3<T> &Vector3<T>::operator /= (const T s) {
         return *this *= 1 / s;
 }
 
-template<typename T> inline T length() {
+template<typename T> inline T Vector3<T>::length() {
 
         return std::sqrt(lengthSquared());
 }
 
-template<typename T> inline T lengthSquared() {
+template<typename T> inline T Vector3<T>::lengthSquared() {
 
         return x * x + y * y + z * z;
 }
