@@ -31,12 +31,46 @@ public:
 #define Green RGBcolor(0.0, 1.0, 0.0)
 #define Blue  RGBcolor(0.0, 0.0, 1.0)
 
-// RGBColor inline functions prototypes
+// RGBColor inline functions definition
 
-RGBcolor operator + (const RGBcolor &c1, const RGBcolor &c2);
-RGBcolor operator - (const RGBcolor &c1, const RGBcolor &c2);
-RGBcolor operator * (const RGBcolor &c, const double a);
-RGBcolor operator * (const double a, const RGBcolor &c);
-RGBcolor operator / (const RGBcolor &c, const double a);
-bool operator == (const RGBcolor &c1, const RGBcolor &c2);
-RGBcolor Pow(const RGBcolor &c, double p);
+inline void writeColor(std::ostream &out, RGBcolor color) {
+
+        out <<  static_cast<int>(255.999 * color.r) << ' ' <<
+                static_cast<int>(255.999 * color.g) << ' ' <<
+                static_cast<int>(255.999 * color.b) << '\n';
+}
+
+inline RGBcolor operator + (const RGBcolor &c1, const RGBcolor &c2) {
+
+        return RGBcolor(c1.r + c2.r, c1.g + c2.g, c1.b + c2.b);
+}
+
+inline RGBcolor operator - (const RGBcolor &c1, const RGBcolor &c2) {
+
+        return RGBcolor(c1.r - c2.r, c1.g - c2.g, c1.b - c2.b);
+}
+
+inline RGBcolor operator * (const RGBcolor &c, const double a) {
+
+        return RGBcolor(c.r * a, c.g * a, c.b * a);
+}
+
+inline RGBcolor operator * (const double a, const RGBcolor &c) {
+
+        return c * a;
+}
+
+inline RGBcolor operator / (const RGBcolor &c, const double a) {
+
+        return c * ( 1  / a);
+}
+
+inline bool operator == (const RGBcolor &c1, const RGBcolor &c2) {
+
+        return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b;
+}
+
+inline RGBcolor Pow(const RGBcolor &c, double p) {
+
+        return RGBcolor(std::pow(c.r, p), std::pow(c.g, p), std::pow(c.b, p));
+}
